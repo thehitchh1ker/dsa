@@ -1,2 +1,2 @@
 # dsa
-Some common data structures and algorithms.
+Implementation of some data structures and algorithms(mostly in C) while learning DSA.
