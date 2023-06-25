@@ -23,7 +23,7 @@ void print_list(Node **tracer) {
 }
 
 // inserts an element at the start of the linked list
-void push(Node **head_ref, int val) {
+void insert_front(Node **head_ref, int val) {
     Node *temp = create_node(val);
     temp->next = *head_ref;
     *head_ref = temp;
@@ -45,8 +45,7 @@ void insert_end(Node **tracer, int val) {
     if (*tracer)
         insert_end(&(*tracer)->next, val);
     else {
-        Node *new_node = create_node(val);
-
+        *tracer = create_node(val);
     }
 }
 
@@ -63,4 +62,42 @@ int main() {
     print_list(&head);
     insert(&head, 0);
     print_list(&head);
+    insert_end(&head, 2);
+    insert(&head, 2);
+    print_list(&head);
+
+    int choice;
+	do {
+	    printf("\n*****\n");
+	    printf("1. Print list\n");
+	    printf("2. Insert node at front\n");
+	    printf("3. Insert node before the first larger number\n");
+	    printf("4. Insert node at end\n");
+	    printf("5. Delete node at front\n");
+	    printf("6. Delete node at end\n");
+	    printf("7. Delete fisrt occurence of a node\n");
+	    printf("8. ** To exit **");
+	
+		printf("\n Enter your choice: ");
+		scanf("%d",&choice);
+		switch (choice) {
+            case 1: printf("List: ");
+                    print_list();
+					break;
+			case 2: insert_front();
+					break;
+			case 3: insert();
+					break;
+			case 4: insert_end();
+					break;
+			case 5: delete_begin();
+					break;
+			case 6: delete_end();
+					break;
+			case 7: delete();
+					break;
+			default:printf("\n Wrong Choice");
+                    break;
+		}
+	} while (choice != 8);
 }
