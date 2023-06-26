@@ -57,8 +57,10 @@ void delete_end(Node** tracer) {
     if (*tracer && (*tracer)->next) {
         delete_end(&(*tracer)->next);
     }
-    free(*tracer);
-    *tracer = NULL;
+    else {
+        free(*tracer);
+        *tracer = NULL;
+    }
 }
 
 // delete first occurence of val
