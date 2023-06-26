@@ -65,7 +65,7 @@ void delete_end(Node** tracer) {
 void delete(Node** tracer, int val) {
     char present = 0;
     if (*tracer && !(present = (*tracer)->key == val)) {
-        delete (&(*tracer)->next, val);
+        delete(&(*tracer)->next, val);
     } else if (present) {
         Node* old = *tracer;
         *tracer = (*tracer)->next;
