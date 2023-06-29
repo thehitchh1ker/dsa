@@ -80,13 +80,16 @@ void delete_list(Node** tracer) {
     *tracer = NULL;
 }
 
-Node* reverse(Node* head) {
-    if (!head || !head->next) return head;
-    Node* rest = reverse(head->next);
-    head->next->next = head;
-    head->next = NULL;
+// reverse a linked list recursively using multiple indirection
+void reverse(Node** head_ref) {
+    if (*head_ref && (*head_ref)->next) {
+        Node* rest = (*head_ref)->next;
+        reverse(&rest);
 
-    return rest;
+        (*head_ref)->next->next = *head_ref;
+        (*head_ref)->next = NULL;
+        *head_ref = rest;
+    }
 }
 
 int main() {
@@ -100,7 +103,7 @@ int main() {
     // head = create_node(4);
     // head->next = create_node(2);
     print_list(head);
-    head = reverse(head);
+    reverse(&head);
     print_list(head);
 
     delete_list(&head);
